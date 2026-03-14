@@ -63,3 +63,24 @@ const sttBtn = document.getElementById('stt');
 window.addEventListener('scroll', () => {
   sttBtn.classList.toggle('visible', window.scrollY > 400);
 });
+
+
+
+// Mobile nav toggle
+const burger = document.getElementById('navBurger');
+const navLinks = document.querySelector('.nav-links');
+
+burger.addEventListener('click', () => {
+  burger.classList.toggle('open');
+  navLinks.classList.toggle('open');
+  document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
+});
+
+// Close menu when a link is clicked
+navLinks.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    burger.classList.remove('open');
+    navLinks.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});

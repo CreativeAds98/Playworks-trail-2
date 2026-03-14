@@ -65,6 +65,60 @@ nav.scrolled{padding:.85rem 4rem;box-shadow:0 4px 30px rgba(42,26,14,.1)}
 .nav-cta:hover{background:var(--ink) !important}
 .nav-cta::after{display:none !important}
 
+
+/* Hamburger button — hidden on desktop */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 700;
+}
+.nav-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--teak);
+  border-radius: 2px;
+  transition: transform .3s, opacity .3s;
+}
+/* Animate to X when open */
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+@media (max-width: 960px) {
+  .nav-burger { display: flex; }
+
+  /* Override the display:none on .nav-links for mobile */
+  .nav-links {
+    display: flex !important;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(255,255,255,.98);
+    backdrop-filter: blur(20px);
+    padding: 6rem 2rem 2.5rem;
+    gap: 1.8rem;
+    transform: translateY(-110%);
+    transition: transform .4s cubic-bezier(.22,.61,.36,1);
+    z-index: 599;
+    border-bottom: 2px solid var(--border-soft);
+    box-shadow: 0 8px 40px rgba(42,26,14,.12);
+  }
+  .nav-links.open {
+    transform: translateY(0);
+  }
+  .nav-links a { font-size: 1.1rem; }
+  .nav-cta { text-align: center; }
+}
+
 /* ══════════════════════════════════════════
    HERO — 3-PANEL SPLIT REVEAL — FULL SCREEN
 ══════════════════════════════════════════ */
